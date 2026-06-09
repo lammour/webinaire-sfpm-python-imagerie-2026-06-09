@@ -24,7 +24,8 @@ Cependant, si vous accès à un ordinateur sous GNU/Linux ou MacOS, il est raiso
 9. [Lancer le logiciel](#9-lancer-le-logiciel)
 10. [Comprendre le code](#10-comprendre-le-code)
 11. [Résultats attendus](#11-résultats-attendus)
-12. [Pour aller plus loin](#12-pour-aller-plus-loin)
+12. [Lancer les tests](#12-lancer-les-tests)
+13. [Pour aller plus loin](#13-pour-aller-plus-loin)
 
 ---
 
@@ -392,7 +393,29 @@ Trois lignes suffisent pour lancer l'application.
 
 ---
 
-## 12. Pour aller plus loin
+## 12. Lancer les tests
+
+Le projet inclut une suite de tests automatisés qui vérifient les étapes clés de l'algorithme NPS.
+
+```
+pytest tests/ -v
+```
+
+Les 5 tests couvrent :
+
+| Test | Ce qu'il vérifie |
+|---|---|
+| `test_detection_centre_fantome` | Le seuillage [-100, +100] UH localise correctement le centre du fantôme |
+| `test_placement_8_rois_dans_image` | Les 8 ROIs du motif octogonal ANSM restent dans l'image |
+| `test_normalisation_nps_2d` | La formule `NPS = \|FFT\|² × pixel² / N` est correctement implémentée |
+| `test_frequence_moyenne` | Le calcul `f̄ = ∫f·NPS df / ∫NPS df` retourne la bonne valeur |
+| `test_pipeline_complet` | Le pipeline complet donne `NPS ≥ 0` et `0 < f̄ < Nyquist` |
+
+Les tests utilisent un fantôme eau synthétique (disque ~0 UH dans l'air -1000 UH) — aucun fichier DICOM n'est nécessaire.
+
+---
+
+## 13. Pour aller plus loin
 
 Ce tutoriel est dérivé d'un projet plus complet de contrôle qualité des images scanner : [github.com/lammour/cq-tdm](https://github.com/lammour/cq-tdm)
 
