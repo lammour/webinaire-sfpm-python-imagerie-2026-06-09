@@ -216,7 +216,6 @@ def moyenne_radiale(
     """
     Calcule la NPS 1D par moyenne radiale angulaire.
 
-    Méthode iQMetrix :
     - 36 profils angulaires de 0° à 350° (pas 10°)
     - Interpolation bilinéaire le long de chaque profil
     - Moyenne des 36 profils → courbe NPS 1D
